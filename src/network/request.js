@@ -1,0 +1,24 @@
+import axios from 'axios'
+
+export default function request(config) {
+    const instance = axios.create({
+        baseURL: "http://49.232.203.244:8001/v1",
+        timeout: 5000
+    })
+
+    instance.interceptors.request.use(config => {
+        // console.log(config)
+        //  处理header
+        return config
+    }, err => {
+        console.log(err)
+    })
+
+    instance.interceptors.response.use(res => {
+        return res.data
+    }, err => {
+        console.log(err)
+    })
+
+    return instance(config)
+}
