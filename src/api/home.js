@@ -1,13 +1,16 @@
-// 首页需要请求的接口
-
-
 import request  from '../network/request'
+/**
+ * getHome() 文章列表请求
+ */
 export function getHome(){
-    request({
+    return request({
         url: "/post"
-    }).then((result) => {
-        console.log(result);
-    }).catch((err) => {
-        console.log(err)
-    });
+    })
 }
+
+export function getPost(postId){
+    return request({
+        url: `/post/${postId}`
+    })
+}
+

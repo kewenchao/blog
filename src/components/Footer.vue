@@ -1,7 +1,8 @@
 <template>
-  <el-footer>Footer</el-footer>
+<div class="footer">
+  Blog@FastAPI + Vue
+</div>
 </template>
-
 
 <script>
 export default {
@@ -11,10 +12,12 @@ export default {
 
 <style>
 .footer {
-     background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    line-height: 160px;
+  background-color: #b3c0d1;
+  color: #333;
+  text-align: center;
+  line-height: 60px;
+  width: 100%;
+  font-size: 20px;
 }
 
 </style>
