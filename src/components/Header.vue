@@ -1,8 +1,8 @@
 <template>
   <div class="header">
-    <img src="../assets/logo.png"> 
+    <img src="../assets/logo.png" />
     <span>个人博客</span>
-    <router-link to="/">首页</router-link>  
+    <router-link to="/">首页</router-link>
     <router-link to="/category">分类</router-link>
     <router-link to="/about"> 关于</router-link>
   </div>
@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style>
-img{
+img {
   margin-top: 18px;
   height: 30px;
   margin-right: 5px;
@@ -29,17 +29,16 @@ img{
   font-size: 20px;
   display: flex;
 }
-a{
+a {
   display: block;
   /* 距离20px */
-  margin-left:20px;
+  margin-left: 20px;
   /* 去掉下划线 */
-  text-decoration:none;
+  text-decoration: none;
   color: black;
 }
 /* 已选择的链接 */
 a:active {
   color: red;
 }
-
 </style>

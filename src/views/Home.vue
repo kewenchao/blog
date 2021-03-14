@@ -1,26 +1,28 @@
 <template>
   <div class="main">
     <div v-for="post in posts" :key="post.id">
-      <router-link :to="{path:`/post/${post.id}`, params:{postId: post.id}}" >
-    <div class="post">
-        <div class="post-title">
-          {{ post.title }}
+      <router-link
+        :to="{ path: `/post/${post.id}`, params: { postId: post.id } }"
+      >
+        <div class="post">
+          <div class="post-title">
+            {{ post.title }}
+          </div>
+          <div class="post-desc">
+            <strong>摘要: </strong> <small>{{ post.body | desc }}</small>
+          </div>
+          <div class="post-outher">
+            发表时间 {{ post.create_at | formatTime }} 阅读({{ post.reading }})
+          </div>
         </div>
-        <div class="post-desc">
-          <strong>摘要: </strong> <small>{{ post.body | desc }}</small>
-        </div>
-        <div class="post-outher">
-          发表时间 {{ post.create_at | formatTime }} 阅读({{ post.reading }})
-        </div>
-      </div>
       </router-link>
-      
     </div>
+    <div>分页</div>
   </div>
 </template>
 
 <script>
-import {getHome} from '../api/home'
+import { getHome } from "../api/home";
 export default {
   name: "Home",
   data() {
@@ -28,7 +30,7 @@ export default {
       posts: [],
       msg: 1,
       // 分页
-      current: 2
+      current: 2,
     };
   },
   methods: {
@@ -40,7 +42,7 @@ export default {
         .catch((err) => {
           console.log(err);
         });
-    }
+    },
   },
   created() {
     this.getPosts();

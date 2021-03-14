@@ -14,19 +14,34 @@
       发表时间 {{ post.create_at | formatTime }} 阅读({{ post.reading }})
     </div>
     <div class="comment">
-        <div class="c-list">评论列表</div>
-        <div v-for="c in comment" :key="c.id">
-            <div class="cont">#{{c.id}} - {{c.author}}@ <br>
-            {{c.content}}</div>
-            <div style="color: #666;">{{c.create_at | formatTime}}</div>
+      <div class="c-list">评论列表</div>
+      <div v-for="c in comment" :key="c.id">
+        <div class="cont">
+          #{{ c.id }} - {{ c.author }}@ <br />
+          {{ c.content }}
         </div>
-
+        <div style="color: #666">{{ c.create_at | formatTime }}</div>
+      </div>
+      <div class="repler">
+        <div class="repler-title">发表评论</div>
+        <div>
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            v-model="comentText"
+          ></textarea>
+          <button @click="postCommentText">提交</button>
+        </div>
+        <small>{{ msg }}</small>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { getPost } from "../api/home";
+import { getPost, postComment } from "../api/home";
 export default {
   name: "Post",
   data() {
@@ -35,6 +50,8 @@ export default {
       post: {},
       tag: {},
       comment: [],
+      comentText: "",
+      msg: "",
     };
   },
   methods: {
@@ -50,7 +67,20 @@ export default {
           console.log(err);
         });
     },
+
+    postCommentText: function () {
+      postComment(this.postId, "zy7y", this.comentText)
+        .then((result) => {
+          console.log(result);
+          this.msg = result.msg;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      this.detail();
+    },
   },
+
   created() {
     console.log(this.$route.params);
     this.detail();
@@ -102,23 +132,32 @@ export default {
   margin-bottom: 10px;
 }
 
-.c-list{
-    font-weight: bold;
-    border-bottom: 1px solid #333;
-    font-size: 1.2em;
-    margin-top: 20px;
-    /* margin: 20px 10px 0; */
-    padding: 0 0 5px 8px;
+.c-list {
+  font-weight: bold;
+  border-bottom: 1px solid #333;
+  font-size: 1.2em;
+  margin-top: 20px;
+  /* margin: 20px 10px 0; */
+  padding: 0 0 5px 8px;
 }
 
-.cont{
-        border-bottom: 1px solid #ccc;
-    /* background: url(images/comment.gif) no-repeat 5px 0; */
-    padding: 15px 0 10px 40px;
-    min-height: 35px;
-    _height: 35px;
-    margin-bottom: 1em;
-    line-height: 1.5em;
-    margin-right: 10px;
+.cont {
+  border-bottom: 1px solid #ccc;
+  /* background: url(images/comment.gif) no-repeat 5px 0; */
+  padding: 15px 0 10px 40px;
+  min-height: 35px;
+  _height: 35px;
+  margin-bottom: 1em;
+  line-height: 1.5em;
+  margin-right: 10px;
+}
+
+.repler-title {
+  font-weight: bold;
+  border-bottom: 1px solid #333;
+  font-size: 1.2em;
+  margin-top: 20px;
+  /* margin: 20px 10px 0; */
+  padding: 0 0 5px 8px;
 }
 </style>

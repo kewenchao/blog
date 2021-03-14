@@ -1,7 +1,5 @@
 <template>
-<div class="footer">
-  Blog@FastAPI + Vue
-</div>
+  <div class="footer">Blog@FastAPI + Vue</div>
 </template>
 
 <script>
@@ -19,5 +17,4 @@ export default {
   width: 100%;
   font-size: 20px;
 }
-
 </style>
