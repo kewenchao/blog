@@ -1,4 +1,7 @@
-Django==3.2.4
+Django
 django-mdeditor
 djangorestframework
 django_filter
+markdown
+django-cors-headers
+djangorestframework-simplejwt
