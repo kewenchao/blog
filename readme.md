@@ -6,15 +6,17 @@
 2. https://www.bilibili.com/video/BV1Sz4y1o7E8
 3. https://www.cnblogs.com/zydeboke/p/11557875.html
 4. https://www.dusaiphoto.com/article/115/
+5. https://blog.csdn.net/weixin_34114823/article/details/89064055
 
 # 功能
-- [x ] 登录
-- [ x ] 退出
-- [x  ] 文章
-- [ x ] 分类
-- [ x ] 友链
-- [x  ] 设置
-- [ ] 权限认证
+- [x] 登录 - django admin
+- [x] 退出 - django admin
+- [x] 文章
+- [x] 分类
+- [x] 友链
+- [x] 设置
+- [x] 权限认证 - django admin
+**新增、编辑、修改接口加上django admin user 认证 只能在django admin 管理系统添加**
 
 # 使用
 1. python manage.py makemigrations blog
