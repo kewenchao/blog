@@ -9,4 +9,3 @@ tortoise-orm
 requests
 jsonpath
 pytest
-requests
